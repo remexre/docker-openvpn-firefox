@@ -15,7 +15,7 @@ function new_container() {
 		-e OPENVPN_USERNAME="${OPENVPN_USERNAME}" \
 		-e OPENVPN_PASSWORD="${OPENVPN_PASSWORD}" \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		"openvpn-firefox:${2:-latest}"
+		"remexre/openvpn-firefox:${2:-latest}"
 }
 
 function restart_container() {

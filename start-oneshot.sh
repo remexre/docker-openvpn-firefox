@@ -22,4 +22,4 @@ docker run \
 	-i \
 	-t \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
-	"openvpn-firefox:${1:-latest}"
+	"remexre/openvpn-firefox:${1:-latest}"
