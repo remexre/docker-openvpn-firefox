@@ -8,4 +8,4 @@ set -eu
 export DISPLAY="$(< /openvpn-firefox/display)"
 
 # Start Firefox
-su -l firefox firefox &
+su -l firefox -c "firefox --profile /data" &

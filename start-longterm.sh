@@ -14,7 +14,11 @@ function new_container() {
 		-e OPENVPN_PROVIDER="${OPENVPN_PROVIDER}" \
 		-e OPENVPN_USERNAME="${OPENVPN_USERNAME}" \
 		-e OPENVPN_PASSWORD="${OPENVPN_PASSWORD}" \
+		-v /dev/shm:/dev/shm \
+		-v /etc/machine-id:/etc/machine-id \
+		-v /run/user/"$(id -u)"/pulse:/run/user/1000/pulse \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-v /var/lib/dbus:/var/lib/dbus \
 		"remexre/openvpn-firefox:${2:-latest}"
 }
 
@@ -26,8 +30,8 @@ function new_window() {
 	docker exec \
 		-d \
 		-e DISPLAY="${DISPLAY}" \
-		-u firefox \
-		"${1:-openvpn-firefox}" firefox
+		"${1:-openvpn-firefox}" \
+		/openvpn-firefox/start-ff.sh
 }
 
 if [[ "${#}" -gt 2 ]]; then

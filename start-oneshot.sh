@@ -19,7 +19,9 @@ docker run \
 	-e OPENVPN_PROVIDER="${OPENVPN_PROVIDER}" \
 	-e OPENVPN_USERNAME="${OPENVPN_USERNAME}" \
 	-e OPENVPN_PASSWORD="${OPENVPN_PASSWORD}" \
-	-i \
-	-t \
+	-v /dev/shm:/dev/shm \
+	-v /etc/machine-id:/etc/machine-id \
+	-v /run/user/"$(id -u)"/pulse:/run/user/1000/pulse \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	-v /var/lib/dbus:/var/lib/dbus \
 	"remexre/openvpn-firefox:${1:-latest}"
